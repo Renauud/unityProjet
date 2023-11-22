@@ -3250,8 +3250,8 @@ Transform:
   m_GameObject: {fileID: 1819789182}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.0017, z: 0}
+  m_LocalScale: {x: 1, y: 0.9965, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1216565170}
@@ -3296,7 +3296,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -3906,6 +3906,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1108249c444ef7441a8f2583f8a17d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 2365113075296252651}
+  moveSpeed: 1
+  forceToApply: {x: 0, y: 0}
+  PlayerInput: {x: 0, y: 0}
+  forceDamping: 1.2
 --- !u!61 &2365113075296252650
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3938,7 +3943,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0046444237, y: -0.07451749}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3949,7 +3954,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.48, y: 0.48}
+  m_Size: {x: 0.14129725, y: 0.18151349}
   m_EdgeRadius: 0
 --- !u!50 &2365113075296252651
 Rigidbody2D:
@@ -3966,7 +3971,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
