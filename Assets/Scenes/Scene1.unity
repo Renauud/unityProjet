@@ -3234,9 +3234,10 @@ GameObject:
   - component: {fileID: 1819789183}
   - component: {fileID: 1819789185}
   - component: {fileID: 1819789184}
+  - component: {fileID: 1819789186}
   m_Layer: 0
   m_Name: CollisionObjects
-  m_TagString: Untagged
+  m_TagString: Fences
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3815,6 +3816,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1819789186
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819789182}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1001 &2365113075296252647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3823,6 +3860,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2262919417458583416, guid: 0850794d87939a0439a6b81cefd21520, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4424720333801120754, guid: 0850794d87939a0439a6b81cefd21520, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3881,13 +3922,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8915058209103771556, guid: 0850794d87939a0439a6b81cefd21520, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2365113075296252651}
-    - targetCorrespondingSourceObject: {fileID: 8915058209103771556, guid: 0850794d87939a0439a6b81cefd21520, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2365113075296252650}
     - targetCorrespondingSourceObject: {fileID: 8915058209103771556, guid: 0850794d87939a0439a6b81cefd21520, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 2365113075296252651}
+    - targetCorrespondingSourceObject: {fileID: 8915058209103771556, guid: 0850794d87939a0439a6b81cefd21520, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2365113075296252649}
+    - targetCorrespondingSourceObject: {fileID: 8915058209103771556, guid: 0850794d87939a0439a6b81cefd21520, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2365113075296252655}
   m_SourcePrefab: {fileID: 100100000, guid: 0850794d87939a0439a6b81cefd21520, type: 3}
 --- !u!1 &2365113075296252648 stripped
 GameObject:
@@ -3908,9 +3952,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2365113075296252651}
   moveSpeed: 1
-  forceToApply: {x: 0, y: 0}
   PlayerInput: {x: 0, y: 0}
-  forceDamping: 1.2
+  isMoving: 0
 --- !u!61 &2365113075296252650
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3918,7 +3961,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2365113075296252648}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -3983,6 +4026,27 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &2365113075296252655
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2365113075296252648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e2a09e244496bd4caac9e8bcb767b36, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
