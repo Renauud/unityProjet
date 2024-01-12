@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    void Update()
+    public void HandleUpdate()
     {
         isMoving = false;
         if (!isMoving)
@@ -41,9 +41,6 @@ public class PlayerController : MonoBehaviour
         {
             Interact();
         }
-    }
-    void FixedUpdate()
-    {
         Vector2 moveForce = PlayerInput * moveSpeed;
 
         rb.velocity = moveForce;

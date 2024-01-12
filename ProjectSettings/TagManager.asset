@@ -51,3 +51,9 @@ TagManager:
   - name: Player
     uniqueID: 1049030157
     locked: 0
+  - name: TextArea
+    uniqueID: 549267851
+    locked: 0
+  - name: Text
+    uniqueID: 208433091
+    locked: 0
