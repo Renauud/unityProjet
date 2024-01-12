@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     public float radius;
 
     public Vector3 position;
-    public float offset2;
 
     private void Awake()
     {
@@ -116,7 +115,6 @@ public class PlayerController : MonoBehaviour
             Gizmos.color = Color.blue;
             position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
             var offset1 = 0.13f;
-            //var offset2 = 0.13f;
             // étant donné qu'il est impossible d'attaquer à gauche par manque de sprite, il n'y a que 3 possibilités puisque l'axe Y prend le dessus sur l'axe X
             //utilisation de animator GetFloat("moveX") pour offset l'épée sur l'attaque en fonction de la directions dans laquel on regarde pour améliorer la QoL
             var xDirection = animator.GetFloat("moveX");

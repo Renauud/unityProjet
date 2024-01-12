@@ -3608,7 +3608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 1891479962}
   dialogueText: {fileID: 1048322110}
-  lettersPerSecond: 800
+  lettersPerSecond: 80
 --- !u!4 &1307136108
 Transform:
   m_ObjectHideFlags: 0
@@ -4825,7 +4825,6 @@ MonoBehaviour:
   circleOrigin: {fileID: 2365113075296252658}
   radius: 0.13
   position: {x: -1, y: 0, z: 0}
-  offset2: 0
 --- !u!61 &2365113075296252650
 BoxCollider2D:
   m_ObjectHideFlags: 0
