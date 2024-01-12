@@ -269,7 +269,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.010966934}
+  m_Offset: {x: 0, y: -0.044055276}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -280,7 +280,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.23271392}
+  m_Size: {x: 0.16, y: 0.2177708}
   m_EdgeRadius: 0
 --- !u!114 &154152808
 MonoBehaviour:
@@ -3130,6 +3130,7 @@ GameObject:
   - component: {fileID: 844254473}
   - component: {fileID: 844254472}
   - component: {fileID: 844254475}
+  - component: {fileID: 844254476}
   m_Layer: 8
   m_Name: Merchant
   m_TagString: Untagged
@@ -3290,9 +3291,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     lines:
-    - Hello !
-    - I am a MERCHANT !!!
-    - I can sell you stuff!
+    - "B-bonjour.. t'as pas l'air d'\xEAtre d'ici.. tout le monde sait ce qu'il va
+      nous arriver.."
+    - Je suis un marchand du village juste devant..
+    - "R\xE9cemment, on a observ\xE9 de l'agitation chez les monstres qui bordent
+      le village..."
+    - "J'ai entendu des bruits \xE9tranges et il para\xEEt qu'un monstre s'est introduit
+      dans le village"
+    - J'ai pris la fuite.. je ne sais pas me battre, moi..
+    - "Tien, prend cette \xE9p\xE9e, tu sauras s\xFBrement mieux t'en servir que
+      moi de toute fa\xE7on"
+--- !u!114 &844254476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844254469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b5b0a23a0b21d4ca6f86f1bab3aa1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1011428697
 GameObject:
   m_ObjectHideFlags: 0
@@ -3565,7 +3585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 1891479962}
   dialogueText: {fileID: 1048322110}
-  letteresPerSecond: 40
+  lettersPerSecond: 40
 --- !u!4 &1307136108
 Transform:
   m_ObjectHideFlags: 0
@@ -4769,6 +4789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2365113075296252651}
   moveSpeed: 1
+  isMoving: 0
   solidObjectsLayer:
     serializedVersion: 2
     m_Bits: 128

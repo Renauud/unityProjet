@@ -2,24 +2,14 @@ using UnityEngine;
 
 public class MerchantController : MonoBehaviour
 {
-    /*
-    private DialogueManager dialogueManager;
-
     private void Start()
     {
-        dialogueManager = FindObjectOfType<DialogueManager>();
+        DialogueManager.Instance.OnDialogueEnd += GiveSword;
     }
 
-    public void Interact()
+    private void GiveSword()
     {
-        if (!dialogueManager.IsDialogueShowing())
-        {
-            dialogueManager.ShowDialogue("Welcome to my shop!");
-        }
-        else
-        {
-            dialogueManager.HideDialogue();
-        }
+        DialogueManager.Instance.GiveSword();
+        Debug.Log("le joueur a obtenu une épée");
     }
-    */
 }
