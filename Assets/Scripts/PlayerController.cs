@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,13 +15,15 @@ public class PlayerController : MonoBehaviour
 
     public DialogueManager dialogueManager;
 
-    public float delay = 0f;
-    private bool attackBlocked;
+    public float delay = 0.8f;
+    private bool attackBlocked; // possibilité d'utiliser une seule variable mais en utiliser 2 peut s'avérer utile pour le futur, bien que dans notre cas ce n'est pas le cas. (attackBlocked parce que nous nous sommes fait toucher par un ennemi en premier par exemple, etc..)
+    public bool isAttacking;
 
     public Transform circleOrigin;
     public float radius;
 
     public Vector3 position;
+    public float offset2;
 
     private void Awake()
     {
@@ -76,6 +79,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
         Debug.Log("attacked");
+        isAttacking = true;
+        attackBlocked = true;
         animator.SetTrigger("AttackTrigger");
         StartCoroutine(DelayAttack());
 
@@ -85,6 +90,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         attackBlocked = false;
+        isAttacking = false;
     }
 
     void Interact()
@@ -105,39 +111,47 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmosSelected() // doit ajouter une condition style isAttacking ou utiliser le attackTrigger pour que l'offset fonctionne bien
     {
-        Gizmos.color = Color.blue;
-        position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
-        var offset = 0.5f;
-        // étant donné qu'il est impossible d'attaquer à gauche par manque de sprite, il n'y a que 3 possibilités puisque l'axe Y prend le dessus sur l'axe X
-        //utilisation de animator GetFloat("moveX") pour offset l'épée sur l'attaque en fonction de la directions dans laquel on regarde pour améliorer la QoL
-        var xDirection = animator.GetFloat("moveX");
-        var yDirection = animator.GetFloat("moveY");
-        if ((xDirection == 1 || xDirection == -1) && yDirection == 0)
+        if (circleOrigin != null && isAttacking)
         {
-            position += new Vector3(offset, 0, 0);
-        }
-        else
-        {
-            if(yDirection > 0)
+            Gizmos.color = Color.blue;
+            position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
+            var offset1 = 0.13f;
+            //var offset2 = 0.13f;
+            // étant donné qu'il est impossible d'attaquer à gauche par manque de sprite, il n'y a que 3 possibilités puisque l'axe Y prend le dessus sur l'axe X
+            //utilisation de animator GetFloat("moveX") pour offset l'épée sur l'attaque en fonction de la directions dans laquel on regarde pour améliorer la QoL
+            var xDirection = animator.GetFloat("moveX");
+            var yDirection = animator.GetFloat("moveY");
+            if ((xDirection == 1 || xDirection == -1) && yDirection == 0)
             {
-                position += new Vector3(0, offset, 0);
+                position += new Vector3(offset1, -offset1, 0);
             }
             else
             {
-                position -= new Vector3(0,offset,0);
+                if(yDirection > 0)
+                {
+                    position += new Vector3(0, offset1 / 2, 0);
+                }
+                else
+                {
+                    position += new Vector3(0, -offset1 * (2-1/2), 0);
+                }
             }
+
+
+            Gizmos.DrawWireSphere(position, radius);
+            DetectColliders(position);
         }
-
-
-        Gizmos.DrawWireSphere(position, radius);
-        DetectColliders();
     }
 
-    public void DetectColliders()
+    public void DetectColliders(Vector3 position)
     {
-        foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position, radius))
+        foreach (Collider2D collider in Physics2D.OverlapCircleAll(position, radius))
         {
-            Debug.Log(collider.name);
+            Health health;
+            if(health = collider.GetComponent<Health>())
+            {
+                health.GetHit(1);
+            }
         }
     }
 }

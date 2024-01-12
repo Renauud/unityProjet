@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 154152807}
   - component: {fileID: 154152806}
   - component: {fileID: 154152808}
+  - component: {fileID: 154152809}
   m_Layer: 8
   m_Name: ShadyGuy
   m_TagString: Untagged
@@ -297,6 +298,27 @@ MonoBehaviour:
   dialogue:
     lines:
     - I WILL mug you.
+--- !u!114 &154152809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154152803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950bd806e6907e34ba34594c3e58b2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 2
+  maxHealth: 2
+  OnHitWithReference:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathWithReference:
+    m_PersistentCalls:
+      m_Calls: []
+  isDead: 0
 --- !u!1 &248899502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3299,8 +3321,9 @@ MonoBehaviour:
     - "J'ai entendu des bruits \xE9tranges et il para\xEEt qu'un monstre s'est introduit
       dans le village"
     - J'ai pris la fuite.. je ne sais pas me battre, moi..
-    - "Tien, prend cette \xE9p\xE9e, tu sauras s\xFBrement mieux t'en servir que
+    - "Tiens, prend cette \xE9p\xE9e, tu sauras s\xFBrement mieux t'en servir que
       moi de toute fa\xE7on"
+    - "Vous obtenez une \xE9p\xE9e.       Clique gauche pour attaquer"
 --- !u!114 &844254476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3585,7 +3608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 1891479962}
   dialogueText: {fileID: 1048322110}
-  lettersPerSecond: 40
+  lettersPerSecond: 800
 --- !u!4 &1307136108
 Transform:
   m_ObjectHideFlags: 0
@@ -4798,9 +4821,11 @@ MonoBehaviour:
     m_Bits: 256
   dialogueManager: {fileID: 0}
   delay: 0.3
+  isAttacking: 0
   circleOrigin: {fileID: 2365113075296252658}
   radius: 0.13
   position: {x: -1, y: 0, z: 0}
+  offset2: 0
 --- !u!61 &2365113075296252650
 BoxCollider2D:
   m_ObjectHideFlags: 0
