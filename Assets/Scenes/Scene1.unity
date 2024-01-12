@@ -4796,6 +4796,11 @@ MonoBehaviour:
   interactableObjects:
     serializedVersion: 2
     m_Bits: 256
+  dialogueManager: {fileID: 0}
+  delay: 0.3
+  circleOrigin: {fileID: 2365113075296252658}
+  radius: 0.13
+  position: {x: -1, y: 0, z: 0}
 --- !u!61 &2365113075296252650
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4889,6 +4894,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &2365113075296252658 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4424720333801120754, guid: 0850794d87939a0439a6b81cefd21520, type: 3}
+  m_PrefabInstance: {fileID: 2365113075296252647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

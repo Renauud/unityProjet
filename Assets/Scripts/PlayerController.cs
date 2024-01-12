@@ -14,8 +14,13 @@ public class PlayerController : MonoBehaviour
 
     public DialogueManager dialogueManager;
 
-    public float delay = 0.3f;
+    public float delay = 0f;
     private bool attackBlocked;
+
+    public Transform circleOrigin;
+    public float radius;
+
+    public Vector3 position;
 
     private void Awake()
     {
@@ -67,8 +72,8 @@ public class PlayerController : MonoBehaviour
     {
         if (attackBlocked)
         {
-            return;
             Debug.Log("can't attack");
+            return;
         }
         Debug.Log("attacked");
         animator.SetTrigger("AttackTrigger");
@@ -98,4 +103,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected() // doit ajouter une condition style isAttacking ou utiliser le attackTrigger pour que l'offset fonctionne bien
+    {
+        Gizmos.color = Color.blue;
+        position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
+        var offset = 0.5f;
+        // étant donné qu'il est impossible d'attaquer à gauche par manque de sprite, il n'y a que 3 possibilités puisque l'axe Y prend le dessus sur l'axe X
+        //utilisation de animator GetFloat("moveX") pour offset l'épée sur l'attaque en fonction de la directions dans laquel on regarde pour améliorer la QoL
+        var xDirection = animator.GetFloat("moveX");
+        var yDirection = animator.GetFloat("moveY");
+        if ((xDirection == 1 || xDirection == -1) && yDirection == 0)
+        {
+            position += new Vector3(offset, 0, 0);
+        }
+        else
+        {
+            if(yDirection > 0)
+            {
+                position += new Vector3(0, offset, 0);
+            }
+            else
+            {
+                position -= new Vector3(0,offset,0);
+            }
+        }
+
+
+        Gizmos.DrawWireSphere(position, radius);
+        DetectColliders();
+    }
+
+    public void DetectColliders()
+    {
+        foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position, radius))
+        {
+            Debug.Log(collider.name);
+        }
+    }
 }
